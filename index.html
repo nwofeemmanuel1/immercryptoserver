@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>page 1</h1>
+  <button>NEXT</button>
+
+
+    <script>
+        
+         document.addEventListener("DOMContentLoaded",
+      ()=>  document.querySelector('button').onclick=async()=> {
+        const result=await  registeruser('sabinusa', "nwoka", "sass@gmail.com", 7989783, "nigeria", "pasworder")
+if(result.error ===true){
+    alert(result.errMessage)
+}else{
+    console.log(result)
+     window.location.href = `http://localhost:3000/page2.html? ${result.token} `
+}
+       
+      }
+
+         )
+
+            const registeruser = async (firstname, lastname, email, phonenumber, country, pasword) => {
+                const response = await fetch('http://localhost:3000/api/registeruser', {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify({
+                        firstname,
+                        lastname,
+                        email,
+                        phonenumber,
+                        country,
+                        pasword
+                    })
+                })
+                const result = await response.json()
+               return result
+            }
+
+          
+   
+    </script>
+</body>
+</html>

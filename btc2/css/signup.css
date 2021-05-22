@@ -1,0 +1,135 @@
+@media (max-width:499px){
+    .speakwithus{
+    text-align: center;
+  box-shadow: 0 20px 100px 0 rgba(0,0,0,0.7);
+  width: 90%;
+margin-left: 7%;
+background-image: url("images\ \(12\).jpeg");
+padding-top: 10%;
+}
+
+.speakwithus h3{
+    color:gray;
+}
+.speakwithus h1{
+    color:dodgerblue;
+    font-size: 20px;
+}
+.speakwithus input{
+   
+    height: 20px;
+    border-radius: 50px;
+padding: 12px;
+margin: 3px;
+text-align: center;
+color: black;
+width: 90%;
+}
+
+.speakwithus textarea{
+    width: 90%;
+    height: 30px;
+    color: black;
+}
+textarea::placeholder{
+    color: red;
+}
+
+.speakwithus button{
+  color: dodgerblue;
+  border-radius: 50px;
+  padding: 10px;
+  width:80%;
+  background-color: green;
+}
+
+
+.speakwithus button :hover{
+  color: dodgerblue;
+  border-radius: 50px;
+  padding: 10px;
+  width:90%;
+  background-color: gold;
+}
+
+.name{
+    color: green;
+    margin-left: 20%;
+}
+
+h3{
+    color: green;
+}
+
+}
+
+
+
+@media (min-width:500px){
+    body{
+        background-image: url("images\ \(12\).jpeg");
+    }
+       .speakwithus{
+    text-align: center;
+  box-shadow: 0 20px 100px 0 rgba(0,0,0,0.7);
+  width: 70%;
+margin-left: 10%;
+padding-top: 10%;
+
+}
+
+.speakwithus h3{
+    color:gray;
+     font-size: 30px;
+}
+.speakwithus h1{
+    color:dodgerblue;
+    font-size: 30px;
+}
+.speakwithus input{
+   
+    height: 20px;
+    border-radius: 50px;
+padding: 15px;
+margin: 4px;
+text-align: center;
+color: black;
+width: 80%;
+}
+
+.speakwithus textarea{
+    width: 90%;
+    height: 50px;
+    color: black;
+}
+textarea::placeholder{
+    color: red;
+}
+
+
+.speakwithus button{
+  color: dodgerblue;
+  border-radius: 50px;
+  padding: 10px;
+  width:80%;
+  background-color: green;
+}
+
+
+.speakwithus button :hover{
+  color: dodgerblue;
+  border-radius: 50px;
+  padding: 10px;
+  width:90%;
+  background-color: gold;
+}
+
+.name{
+    color: green;
+    margin-left: 50%;
+}
+
+h3{
+    color: green;
+}
+}

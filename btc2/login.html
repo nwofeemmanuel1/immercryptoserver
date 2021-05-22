@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="description"
+        content="Proinvest in as investment company that aggregates funds for investment in bitcoin and forex trading.                                                                                                                                                                                                                                                                                                                                                                                                               ">
+    <meta name="keywords"
+        content="proinvest, bitcoin trading, forex, investment, trading                                                                                                                                                                                                                                                                                                                                                                                                                                                  ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+
+    <link rel="shortcut icon" href="https://ellipticrypto.com/uploads/20201116_153240_0001.png">
+
+    <!-- Font Icon Styles -->
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/icons.css">
+    <!-- /font icon Styles -->
+    <!-- Load Styles -->
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/bootstrap-formhelpers.min.css">
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/chartist.min.css">
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/style.min.css">
+    <!-- /load styles -->
+    <!-- include summernote css/js -->
+    <link href="https://ellipticrypto.com/assets/dist/summernote/summernote-bs4.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ellipticrypto.com/assets/dist/css/intlTelInput.css">
+    <script src="https://ellipticrypto.com/assets/dist/js/jquery.min.js"></script>
+</head>
+
+<body class="dt-header--fixed theme-dark dt-layout--full-width dt-sidebar--fixed o-auto">
+    <!-- Root -->
+    <div class="dt-root op-1">
+        <div class="dt-root__inner">
+            <!-- Login Container -->
+            <div class="dt-login--container">
+
+                <!-- Login Content -->
+                <div class="dt-login__content-wrapper">
+
+                    <!-- Login Background Section -->
+                    <div class="dt-login__bg-section">
+
+                        <div class="dt-login__bg-content">
+                            <!-- Login Title -->
+                            <h1 class="dt-login__title">Login</h1>
+                            <!-- /login title -->
+
+                            <p class="f-16">Sign in and explore IMMERCRYPTO PLC Fund .</p>
+                        </div>
+
+
+                        <!-- Brand logo -->
+                        <div class="dt-login__logo">
+                            <a class="dt-brand__logo-link" href="index.html">
+                                <img class="dt-brand__logo-img" src="images/immercryptologo.jpg" alt="logo">
+                            </a>
+                        </div>
+                        <!-- /brand logo -->
+
+                    </div>
+                    <!-- /login background section -->
+
+                    <!-- Login Content Section -->
+                    <div class="dt-login__content">
+
+                        <!-- Login Content Inner -->
+                        <div class="dt-login__content-inner">
+                            <h2 class="f-20">Enter your email and password below.</h2>
+                            <div id="errmessage" style="color: red; text-align: center;"></div>
+                            <!-- Form -->
+                            <form action="#" id="loginForm" method="post" accept-charset="utf-8">
+
+                                <!-- <input type="hidden" name="csrf_test_name" value="09d39f86f3d637c7c59606bdb6c9286a" /> -->
+                                <div id="error"></div>
+
+                                <style>
+                                    #error {
+                                        color: red;
+                                        font-size: 20px;
+                                        text-align: center;
+                                    }
+                                </style>
+                                <div class="form-group">
+                                    <label class="sr-only" for="email-1">Email address</label>
+                                    <input type="email" class="form-control" name="email" id="email-1"
+                                        aria-describedby="email-1" placeholder="Enter email" value="">
+                                </div>
+                                <!-- /form group -->
+
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label class="sr-only" for="password-1">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password-1"
+                                        placeholder="Password" value="">
+                                </div>
+                                <!-- /form group -->
+
+                                <!-- Form Group -->
+                                <div class="dt-checkbox d-block mb-6">
+                                    <input type="checkbox" id="checkbox-1">
+                                    <label class="dt-checkbox-content" for="checkbox-1">
+                                        Keep me login on this device
+                                    </label>
+                                </div>
+                                <!-- /form group -->
+                                <script>
+                                    accesslogin = async (email, pasword) => {
+                                        const response = await fetch("http://localhost:3000/api/login", {
+                                            method: "POST",
+                                            headers: { "content-type": "application/json" },
+                                            body: JSON.stringify({
+                                                email,
+                                                pasword
+                                            })
+                                        })
+                                        const result = await response.json()
+                                        return result
+                                    }
+
+                                    const loginuser = async () => {
+                                        event.preventDefault()
+
+                                        const email = document.getElementById('email-1').value
+                                        const pasword = document.getElementById('password-1').value
+
+                                        if (!email) return document.getElementById('error').innerHTML = "email  is required"
+
+                                        if (!pasword) return document.getElementById('error').innerHTML = "pasword is required"
+                                        if (pasword.length < 8) return document.getElementById('error').innerHTML = "pasword must be atleast 8 characters"
+                                        document.getElementById('error').innerHTML = ""
+                                        const result = await accesslogin(email, pasword)
+                                        document.querySelector('#login').innerHTML="proccessing"
+                                        if (result.error) {
+                                        document.getElementById('error').innerHTML = result.errMessage
+                                      document.querySelector('#login').innerHTML = "error" 
+                                        }else{
+                                          window.location.href = `dashboard.html? ${result.token}, email`
+                                        }
+
+                                                             
+                                    }
+                                </script>
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-info text-uppercase" id="login"
+                                        onclick="loginuser()">Login</button>
+                                    <span class="d-inline-block ml-4">Or
+                                        <a class="d-inline-block font-weight-500 ml-3"
+                                            href="signup.html">Create New Account</a>
+                                    </span>
+                                </div>
+                                <!-- /form group -->
+                            </form> <!-- /form -->
+
+                        </div>
+                        <!-- /login content inner -->
+
+                        <!-- Login Content Footer -->
+                        <!-- <div class="dt-login__content-footer">
+                        <a href="https://ellipticrypto.com/forgotPassword">Can�t access your account?</a>
+                    </div> -->
+                        <!-- /login content footer -->
+
+                    </div>
+                    <!-- /login content section -->
+
+                </div>
+                <!-- /login content -->
+
+            </div>
+            <!-- /login container -->
+            <script src="https://ellipticrypto.com/assets/dist/summernote/summernote-bs4.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/summernote/editor-summernote.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/moment/moment.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/bootstrap/bootstrap.bundle.min.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/contact.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/perfect-scrollbar.min.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/masonry.pkgd.min.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/sweetalert2.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/customizer.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/Chart.min.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/chartist.min.js"></script>
+            <script src="https://ellipticrypto.com/assets/dist/js/script.js"></script>
+
+            <script>
+
+            </script>
+</body>
+
+</html>
